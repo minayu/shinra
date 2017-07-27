@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemImage"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DropName"
+            android:id="@+id/chattelName"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentStart="false"
+            android:layout_toEndOf="@id/itemImage"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(99)"
+            android:id="@+id/chattelCount"
+            android:layout_toEndOf="@id/chattelName"
+            android:textColor="#000000" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="use"
+            android:id="@+id/useButton"
+            android:layout_gravity="right"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/button_use"
+            android:background="#00000000" />
+
+    </RelativeLayout>
+
+</LinearLayout>

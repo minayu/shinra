@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="jp.ac.jec.cm0130.genju">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <service
+            android:name=".MyService3"
+            android:enabled="true" />
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".AlarmBroadcastReceiver"
+            android:process=":remote" />
+
+        <activity android:name=".DungeonActivity" />
+        <activity android:name=".ChattelActivity" />
+        <activity android:name=".ShopActivity" />
+        <activity android:name=".EnemyActivity" />
+        <activity android:name=".EnemySelectActivity"></activity>
+    </application>
+
+</manifest>

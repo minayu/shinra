@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jp.ac.jec.cm0130.genju.DungeonActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#3c3f41">
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:id="@+id/iButtonHome"
+            android:layout_weight="1"
+            android:src="@drawable/menu_home"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="2dp"
+            android:background="#000000"
+            android:scaleType="fitCenter" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:id="@+id/iButtonItem"
+            android:layout_weight="1"
+            android:src="@drawable/menu_item"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#000000"
+            android:scaleType="fitCenter" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:id="@+id/iButtonDungeon"
+            android:layout_weight="1"
+            android:src="@drawable/menu_dungeon"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#000000"
+            android:scaleType="fitCenter" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:id="@+id/iButtonShop"
+            android:layout_weight="1"
+            android:src="@drawable/menu_shop"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#000000"
+            android:scaleType="fitCenter" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:id="@+id/iButtonEnemy"
+            android:layout_weight="1"
+            android:src="@drawable/menu_enemy"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="4dp"
+            android:background="#000000"
+            android:scaleType="fitCenter" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/white"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="raptime"
+            android:id="@+id/txtTimer"
+            android:textSize="30dp"
+            android:layout_marginTop="6dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/kadomaru_10dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="34dp"
+            android:layout_marginRight="34dp"
+            android:gravity="center_vertical|center_horizontal" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView2" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView16"
+                    android:src="@drawable/kazantitainoonsen"
+                    android:layout_marginLeft="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="火山地帯の温泉"
+                    android:id="@+id/textView19"
+                    android:textSize="24dp"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="24dp"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageButton10"
+                    android:background="#00000000"
+                    android:src="@drawable/into_dungeon"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="48dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView15"
+                        android:src="@drawable/musinomori"
+                        android:layout_marginLeft="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="蟲の森"
+                        android:id="@+id/textView18"
+                        android:textSize="24dp"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="24dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton9"
+                        android:background="#00000000"
+                        android:src="@drawable/into_dungeon"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="48dp" />
+                </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView14"
+                        android:src="@drawable/tinbotusen"
+                        android:layout_marginLeft="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="沈没船"
+                        android:id="@+id/textView17"
+                        android:textSize="24dp"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="24dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton8"
+                        android:background="#00000000"
+                        android:src="@drawable/into_dungeon"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="48dp" />
+                </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView13"
+                        android:src="@drawable/karehatetakouzan"
+                        android:layout_marginLeft="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="枯れ果てた鉱山"
+                        android:id="@+id/textView16"
+                        android:textSize="24dp"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="24dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton7"
+                        android:background="#00000000"
+                        android:src="@drawable/into_dungeon"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="48dp" />
+                </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView12"
+                        android:src="@drawable/akumanoiseki"
+                        android:layout_marginLeft="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="悪魔の遺跡"
+                        android:id="@+id/textView15"
+                        android:textSize="24dp"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="24dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton6"
+                        android:background="#00000000"
+                        android:src="@drawable/into_dungeon"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="48dp" />
+                </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView11"
+                        android:src="@drawable/kodokunodoukutu"
+                        android:layout_marginLeft="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="孤独の洞窟"
+                        android:id="@+id/textView14"
+                        android:textSize="24dp"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="24dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton5"
+                        android:background="#00000000"
+                        android:src="@drawable/into_dungeon"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="48dp" />
+                </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView10"
+                        android:src="@drawable/haikyotonattamati"
+                        android:layout_marginLeft="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="廃墟となった町"
+                        android:id="@+id/textView13"
+                        android:textSize="24dp"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="24dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton4"
+                        android:background="#00000000"
+                        android:src="@drawable/into_dungeon"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="48dp" />
+                </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView9"
+                        android:src="@drawable/aratanarakuen"
+                        android:layout_marginLeft="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="新たな楽園"
+                        android:id="@+id/textView12"
+                        android:textSize="24dp"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="24dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton3"
+                        android:background="#00000000"
+                        android:src="@drawable/into_dungeon"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="48dp" />
+                </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView8"
+                        android:src="@drawable/kodokunomori"
+                        android:layout_marginLeft="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="孤独の森"
+                        android:id="@+id/textView11"
+                        android:textSize="24dp"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="24dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton2"
+                        android:background="#00000000"
+                        android:src="@drawable/into_dungeon"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="48dp" />
+                </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView7"
+                        android:src="@drawable/nodokanasunahama"
+                        android:layout_marginLeft="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="長閑な砂浜"
+                        android:id="@+id/textView10"
+                        android:textSize="24dp"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="24dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageButton"
+                        android:background="#00000000"
+                        android:src="@drawable/into_dungeon"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="48dp" />
+                </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView3"
+                        android:src="@drawable/nangokunosima"
+                        android:layout_marginLeft="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="南国の島"
+                        android:id="@+id/textView6"
+                        android:textSize="24dp"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="24dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ibtnDun03"
+                        android:background="#00000000"
+                        android:src="@drawable/into_dungeon"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="48dp" />
+                </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView2"
+                        android:src="@drawable/aresabaku"
+                        android:layout_marginLeft="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="荒れ砂漠"
+                        android:id="@+id/textView3"
+                        android:textSize="24dp"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="24dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ibtnDun02"
+                        android:background="#00000000"
+                        android:src="@drawable/into_dungeon"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="48dp" />
+                </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView"
+                        android:src="@drawable/syosinsyanomori"
+                        android:layout_marginLeft="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="初心者の森"
+                        android:id="@+id/textView2"
+                        android:textSize="24dp"
+                        android:textColor="#000000"
+                        android:layout_marginLeft="24dp"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ibtnDun01"
+                        android:background="#00000000"
+                        android:src="@drawable/into_dungeon"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="48dp" />
+                </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="4dp"
+        android:background="#FFFFFF"></LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:background="#ffffff">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="荒れ果てた大地"-->
+            <!--android:id="@+id/textView3"-->
+            <!--android:textColor="#ffffff"-->
+            <!--android:textSize="20dp"-->
+            <!--android:background="@drawable/kadomaru_10dp"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:layout_marginLeft="26dp"-->
+            <!--android:layout_marginRight="26dp" />-->
+
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/btnDaichi"-->
+            <!--android:layout_alignBottom="@+id/txtTimer" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--android:background="#ffffff">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="始まりの森"-->
+            <!--android:id="@+id/textView2"-->
+            <!--android:textColor="#ffffff"-->
+            <!--android:textSize="20dp"-->
+            <!--android:background="@drawable/kadomaru_10dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:layout_marginLeft="26dp"-->
+            <!--android:layout_marginRight="26dp" />-->
+
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/btnDungeon"-->
+            <!--android:layout_alignBottom="@+id/txtTimer"-->
+            <!--android:layout_gravity="right" />-->
+    <!--</LinearLayout>-->
+
+</LinearLayout>

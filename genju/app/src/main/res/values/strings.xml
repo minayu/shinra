@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">shinra</string>
+    <string name="title_activity_shop">ShopActivity</string>
+    <string name="title_activity_item">ItemActivity</string>
+
+    <string-array name="yorishiro_select">
+        <item>インプ</item>
+        <item>犬神</item>
+        <item>宝箱の亡霊</item>
+        <item>ラヴァゴーレム</item>
+        <item>アックスピーク</item>
+        <item>ミツバチモドキ</item>
+        <item>スキュラ</item>
+
+    </string-array>
+
+</resources>

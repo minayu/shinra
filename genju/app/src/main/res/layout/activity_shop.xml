@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jp.ac.jec.cm0130.genju.ShopActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#3c3f41">
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:id="@+id/iButtonHome"
+            android:layout_weight="1"
+            android:src="@drawable/menu_home"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="2dp"
+            android:background="#000000"
+            android:scaleType="fitCenter" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:id="@+id/iButtonItem"
+            android:layout_weight="1"
+            android:src="@drawable/menu_item"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#000000"
+            android:scaleType="fitCenter" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:id="@+id/iButtonDungeon"
+            android:layout_weight="1"
+            android:src="@drawable/menu_dungeon"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#000000"
+            android:scaleType="fitCenter" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:id="@+id/iButtonShop"
+            android:layout_weight="1"
+            android:src="@drawable/menu_shop"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#000000"
+            android:scaleType="fitCenter" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:id="@+id/iButtonEnemy"
+            android:layout_weight="1"
+            android:src="@drawable/menu_enemy"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="4dp"
+            android:background="#000000"
+            android:scaleType="fitCenter" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginLeft="4dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="アイテムSHOP"
+            android:id="@+id/textView"
+            android:background="@drawable/kadomaru_10dp"
+            android:textSize="24dp"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="46dp"
+            android:layout_marginRight="46dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp">
+
+    </LinearLayout>
+
+</LinearLayout>
