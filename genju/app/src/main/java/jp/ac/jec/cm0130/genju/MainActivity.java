@@ -7,27 +7,15 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+/*
+    Home画面（メインメニュー
+    幻獣、ステータス、行動ログなどの表示
+*/
+
 public class MainActivity extends AppCompatActivity {
 
-//    class EnemyButtonClickLister implements View.OnClickListener {
-//        @Override
-//        public void onClick(View v) {
-////            Intent intent = new Intent(MainActivity.this, DungeonActivity.class);
-////            startActivity(intent);
-////            overridePendingTransition(0, 0);
-//
-//            // 変更したいレイアウトを取得する
-//            LinearLayout layout = (LinearLayout)findViewById(R.id.homeLayout);
-//// レイアウトのビューをすべて削除する
-//            layout.removeAllViews();
-//// レイアウトをR.layout.*****に変更する
-//            getLayoutInflater().inflate(R.layout.activity_dungeon, layout);
-//
-////            finish();
-////            startActivity(getIntent());
-//        }
-//    }
-
+    // ステータス表示
+    //　画面遷移などした際も正しく表示されるように
     @Override
     protected void onResume() {
         super.onResume();
@@ -60,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        findViewById(R.id.iButtonEnemy).setOnClickListener(new EnemyButtonClickLister());
-
+        // 上部メニューボタンの設定
+        
+        // ダンジョン
         ImageButton ibtnDungeon = (ImageButton)findViewById(R.id.iButtonDungeon);
         ibtnDungeon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
             }
         });
-
+        
+        // アイテム
         ImageButton ibtnItem = (ImageButton)findViewById(R.id.iButtonItem);
         ibtnItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // ショップ
         ImageButton ibtnShop = (ImageButton)findViewById(R.id.iButtonShop);
         ibtnShop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 討伐
         ImageButton ibtnEnemy = (ImageButton)findViewById(R.id.iButtonEnemy);
         ibtnEnemy.setOnClickListener(new View.OnClickListener() {
             @Override
