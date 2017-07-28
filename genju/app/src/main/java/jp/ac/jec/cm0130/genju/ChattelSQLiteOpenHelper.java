@@ -10,7 +10,10 @@ import java.util.ArrayList;
 
 /**
  * Created by minayu on 17/03/06.
- */
+　***所持アイテムに関する処理
+  Chattel = 財産（Itemは予約語のため使用不可
+*/
+
 public class ChattelSQLiteOpenHelper extends SQLiteOpenHelper {
     public ChattelSQLiteOpenHelper(Context context) {
         super(context, "CHATTEL_DB", null, 1);
@@ -18,6 +21,13 @@ public class ChattelSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        // アイテムの初期設定
+        /*　name...名称
+            count..個数
+            use...特殊（使用可能かどうか...?
+        
+        */
+        
         db.execSQL("CREATE TABLE CHATTEL( _id integer primary key autoincrement," +
                 "name TEXT, count INTEGER, use INTEGER)");
         db.execSQL("INSERT INTO CHATTEL VALUES(1, '石ころ', 1, 0)");
@@ -27,19 +37,19 @@ public class ChattelSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO CHATTEL VALUES(5, '金のかけら', 1, 1)");
         db.execSQL("INSERT INTO CHATTEL VALUES(6, 'エメラルド', 1, 1)");
 
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
+    // 全ての所持アイテムの出力　アイテム画面で一覧表示する用
     public void getAllChattelItem(ArrayList<Chattel> ary) {
         ary.clear();
         SQLiteDatabase db = getReadableDatabase();
         if( db == null ) return;
         try {
-            // money,date,idを取り出す
+            // id,name,count,useを取り出す
             Cursor cur = db.query("CHATTEL", new String[]{"_id","name","count","use" }, null, null, null, null, null);
             while( cur.moveToNext() ) {
                 ary.add(new Chattel(cur.getInt(0), cur.getString(1), cur.getInt(2) ,cur.getInt(3)));
@@ -49,7 +59,7 @@ public class ChattelSQLiteOpenHelper extends SQLiteOpenHelper {
             db.close();
         }
     }
-
+    // 新規アイテム追加処理　ダンジョン、討伐のドロップなど用
     public boolean insertChattel(Chattel src) {
         long ret = -1;
         Chattel tmp = getItemFromName(src.getName());
@@ -78,6 +88,8 @@ public class ChattelSQLiteOpenHelper extends SQLiteOpenHelper {
         }
         return ret != -1;
     }
+    
+    // 名称が同じアイテムを個数だけ追加する処理用...?
     public Chattel getItemFromName(String name) {
         Chattel tmp = null;
         SQLiteDatabase db = getReadableDatabase();
