@@ -16,10 +16,12 @@ import java.util.ArrayList;
 public class DungeonActivity extends AppCompatActivity {
     private ArrayList<Status> ary = new ArrayList<>();
 
-    private int dNumber = 1;
+    // 潜入ダンジョンの識別用変数
+    private int dNumber = 0;
 //    private int nowLevel;
 //    private int expGauge = nowLevel * 10;
 
+    //ダンジョンのカウントダウン
     class CountDown extends CountDownTimer {
         public CountDown(long millisInFuture, long countDownInterval) {
             super(millisInFuture, countDownInterval);
@@ -29,8 +31,8 @@ public class DungeonActivity extends AppCompatActivity {
         public void onTick(long millisUntilFinished) {
             long mm = millisUntilFinished / 1000 / 60;
             long ss = millisUntilFinished / 1000 % 60;
+            //　残り時間の表示
              TextView txt = (TextView) findViewById(R.id.txtTimer);
-
              txt.setText("残り" + mm + ":" + ss);
         }
 
@@ -43,14 +45,13 @@ public class DungeonActivity extends AppCompatActivity {
             ChattelSQLiteOpenHelper helper = new ChattelSQLiteOpenHelper(DungeonActivity.this);
             StatusSQLiteOpenHelper sHelper = new StatusSQLiteOpenHelper(DungeonActivity.this);
 
-            int nowLevel = sHelper.getNowLevel();
-            int expGauge = nowLevel * 10;
-
-
+            // 潜入したダンジョンによって処理の分岐
             if(dNumber == 1){
+                // 入手可能アイテムの追加
                 Chattel getChattel = new Chattel(4, "ぼろい布", 2,1);
                 helper.insertChattel(getChattel);
 
+                // 獲得経験値の設定
                 Status getExp = new Status(0,0,0,0,0,10);
 
                 sHelper.insertExp(getExp);
@@ -81,6 +82,11 @@ public class DungeonActivity extends AppCompatActivity {
 
             }
 
+            // レベルアップに必要な経験値
+            int nowLevel = sHelper.getNowLevel();
+            int expGauge = nowLevel * 10;
+
+            // レベルアップ処理
             if(sHelper.getNowExp() >= expGauge){
                 Log.d("exp", String.valueOf(sHelper.getNowExp()));
 
@@ -114,7 +120,7 @@ public class DungeonActivity extends AppCompatActivity {
 //        nowLevel = sHelper.getNowLevel();
 
 
-
+        // ダンジョン潜入ボタンの処理
         findViewById(R.id.ibtnDun01).setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -127,6 +133,7 @@ public class DungeonActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
 //                                CountDown countDown = new CountDown(3 * 60 * 1000, 100);
                                 // OK button pressed
+                                // 潜入時間の設定
                                 CountDown countDown = new CountDown(1 * 1000, 100);
                                 countDown.start();
 
@@ -186,8 +193,7 @@ public class DungeonActivity extends AppCompatActivity {
 
         });
 
-
-
+        // 上部メニューボタンの設定
         findViewById(R.id.iButtonHome).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
