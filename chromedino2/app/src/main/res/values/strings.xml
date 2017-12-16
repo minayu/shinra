@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">chromedino2</string>
+    <string name="title_activity_scroll">ScrollActivity</string>
+</resources>
