@@ -8,7 +8,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -29,11 +31,13 @@ public class ScrollView extends View {
     // GameOver画面用
     Paint fullScr = new Paint();
     Paint gameOverPaint = new Paint();
+    Paint scorePaint = new Paint();
     int screenWidth;
     int screenHeight;
     public static final int GAME_RUN = 1;
     public static final int GAME_OVER = 2;
     private int state = 0;
+    String gameOverStr = "Game Over";
 
     // 描画位置Y軸
     int constY = 570;
@@ -49,6 +53,7 @@ public class ScrollView extends View {
     long startTime = System.currentTimeMillis();
     long playTime = 0;
     long score = 0;
+    String scoreStr;
 
     // Player画像の読み込み
     Resources res = this.getContext().getResources();
@@ -82,39 +87,36 @@ public class ScrollView extends View {
         // 描画処理
         canvas.drawBitmap(player, 0, playerY, paint);
         canvas.drawBitmap(enemy, enemyX, enemyY, paint);
-        totalTime.setColor(Color.BLACK);
-        totalTime.setAntiAlias(true);
-        totalTime.setTextSize(70);
-        totalTime.setTextAlign(Paint.Align.CENTER);
-        // プレイ時間の表示
-        playTime = System.currentTimeMillis();
-        SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss.SS");
+//        totalTime.setColor(Color.BLACK);
+//        totalTime.setAntiAlias(true);
+//        totalTime.setTextSize(70);
+//        totalTime.setTextAlign(Paint.Align.CENTER);
+        scorePaint.setColor(Color.BLACK);
+        scorePaint.setAntiAlias(true);
+        scorePaint.setTextSize(70);
+        scorePaint.setTextAlign(Paint.Align.CENTER);
+        // SCORE（プレイ時間）の表示
         playTime = System.currentTimeMillis() - startTime;
-        String timeStr = dataFormat.format(playTime);
-        canvas.drawText(timeStr, 1500, 100, totalTime);
+        score = playTime * 10 / 100;
+        scoreStr = "SCORE: " + String.valueOf(score);
+        canvas.drawText(scoreStr, 1500, 100, scorePaint);
 
         // 当たり判定 ゲームオーバー
         // サイズ player 71/121, enemy 49/59
         if(enemyX <= 71 && playerY > constY-49) {
-            Log.d("msg", "gameover");
-            score = playTime * 10 / 100;
-            playTime = 0;
-            Log.d("msg", String.valueOf(score));
-            score = 0;
             // ゲームオーバー画面の表示
-            canvas.drawBitmap(enemy, 1000, 1000, paint);
             fullScr.setColor(0xDD000000);
-            canvas.drawRect(0f, 0f, (float) screenWidth, (float) screenHeight, fullScr);
             gameOverPaint.setColor(Color.WHITE);
             gameOverPaint.setAntiAlias(true);
             gameOverPaint.setTextSize(70);
             gameOverPaint.setTextAlign(Paint.Align.CENTER);
-            String gameOver = "Game Over";
-            canvas.drawText(gameOver, screenWidth / 2, screenHeight / 2, gameOverPaint);
-
-            enemyX = 1400;
-            enemyY = 650;
-            stopGame();
+            scorePaint.setColor(Color.WHITE);
+            // スコアの設定
+            canvas.drawBitmap(enemy, 1000, 1000, paint);
+            canvas.drawRect(0f, 0f, (float) screenWidth, (float) screenHeight, fullScr);
+            canvas.drawText(gameOverStr, screenWidth / 2, screenHeight / 2, gameOverPaint);
+            canvas.drawText("SCORE: " +String.valueOf(score), screenWidth / 2, screenHeight / 2 - 100, scorePaint);
+            isGameOver();
         }
 
         if (state == GAME_RUN) {
@@ -129,20 +131,36 @@ public class ScrollView extends View {
         }
     }
 
-    public void stopGame() {
-        state = GAME_OVER;
+    public void restartGame() {
+        state = GAME_RUN;
+        startTime = System.currentTimeMillis();
+        invalidate();
+    }
 
+    public void isGameOver() {
+        playTime = 0;
+        score = 0;
+        enemyX = 1400;
+        enemyY = 650;
+        state = GAME_OVER;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         // タッチされた時
-        // 多重ジャンプの防止
-        if (playerY == constY) {
+        // 多重ジャンプの防止、ゲームリスタート時のジャンプを抑止
+        if (playerY == constY & state == GAME_RUN) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                playerVY = -70;
+                playerVY = -60;
             }
         }
+        // ゲームリスタート
+        if (state == GAME_OVER) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                restartGame();
+            }
+        }
+
         return true;
     }
 
@@ -166,6 +184,7 @@ public class ScrollView extends View {
         super(context, attrs, defStyleAttr);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public ScrollView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
