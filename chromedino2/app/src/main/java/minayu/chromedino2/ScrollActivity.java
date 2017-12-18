@@ -15,4 +15,12 @@ public class ScrollActivity extends AppCompatActivity {
         setContentView(l);
         l.addView(new ScrollView(this));
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LinearLayout l = new LinearLayout(this);
+        setContentView(l);
+        l.addView(new ScrollView(this));
+    }
 }
