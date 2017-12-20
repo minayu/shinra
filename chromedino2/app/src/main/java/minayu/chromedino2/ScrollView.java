@@ -22,17 +22,21 @@ import java.util.Random;
  */
 
 public class ScrollView extends View {
-    // Imageの表示用
+
     Paint paint = new Paint();
-    // GameOver画面用
+    // GameOver画面用 背景と文字色を同化させないため分けた
     Paint fullScr = new Paint();
     Paint gameOverPaint = new Paint();
     Paint scorePaint = new Paint();
     int screenWidth;
     int screenHeight;
+    int ran;
+    int secondRnd;
+    // GameOver判定用
     public static final int GAME_RUN = 1;
     public static final int GAME_OVER = 2;
-    private int state = 0;
+    public static final int GAME_STOP = 3;
+    private int state = 1;
     String gameOverStr = "Game Over";
 
     // PLAYER描画用
@@ -60,7 +64,6 @@ public class ScrollView extends View {
         super.onDraw(canvas);
 
         state = GAME_RUN;
-
         //プレイヤーのジャンプ描画
         playerY += playerVY;
         playerVY += 4;
@@ -77,17 +80,9 @@ public class ScrollView extends View {
             canvas.drawBitmap(enemy, 1000, 1000, paint);
             enemyX = drawEnemyX;
             enemyY = 650;
-//            enemyVX += -1;
-            // ENEMYの速度用(10 ~ 29)
-            Random rnd = new Random();
-            int ran = (rnd.nextInt(2) + 1) * 10;
-            int secondRnd = rnd.nextInt(10);
-            enemyVX = -(ran + secondRnd);
+            // 次エネミーの速度を変更する
+            createRandom();
             Log.v("random", String.valueOf(enemyVX));
-
-//            if(enemyVX < -22) {
-//                enemyVX = -12;
-//            }
         }
 
         // 描画処理
@@ -106,6 +101,12 @@ public class ScrollView extends View {
         // 当たり判定 ゲームオーバー
         // サイズ player 85/80 (71/121), enemy 49/59
         if(enemyX <= 85 && playerY > drawPlayerY - 49) {
+            state = GAME_STOP;
+            //ウェイト処理
+            try {
+                Thread.sleep(700);
+            } catch (InterruptedException e) {
+            }
             // ゲームオーバー画面の表示
             fullScr.setColor(0xDD000000);
             gameOverPaint.setColor(Color.WHITE);
@@ -134,6 +135,14 @@ public class ScrollView extends View {
         }
     }
 
+    public void createRandom() {
+        // ENEMYの速度用(乱数:10 ~ 29)
+        Random rnd = new Random();
+        ran = (rnd.nextInt(2) + 1) * 10;
+        secondRnd = rnd.nextInt(10);
+        enemyVX = -(ran + secondRnd);
+    }
+
     public void restartGame() {
         state = GAME_RUN;
         startTime = System.currentTimeMillis();
@@ -151,26 +160,22 @@ public class ScrollView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        // タッチされた時
-        // 多重ジャンプの防止、ゲームリスタート時のジャンプを抑止
-        if (playerY == drawPlayerY & state == GAME_RUN) {
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            // 多重ジャンプの防止、ゲームリスタート時のジャンプを抑止
+            if (playerY == drawPlayerY & state == GAME_RUN) {
                 playerVY = -60;
-            }
-        }
-        // ゲームリスタート
-        if (state == GAME_OVER) {
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            // ゲームリスタート
+            } else if (state == GAME_OVER) {
                 restartGame();
             }
         }
-
         return true;
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+        // 描画位置用
         screenWidth = w;
         screenHeight = h;
         Log.v("ViewSize:", w + ":" + h);
