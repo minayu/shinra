@@ -6,12 +6,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -39,6 +40,11 @@ public class ScrollView extends View {
     private int state = 1;
     String gameOverStr = "Game Over";
 
+    float multiWidth;
+    float multiHeight;
+    int backgroundWidth;
+    int backgroundHeight;
+
     // PLAYER描画用
     final int drawPlayerY = 570;
     int playerY = drawPlayerY;
@@ -50,7 +56,7 @@ public class ScrollView extends View {
     int enemyY = 650;
     // Score用の時間
     long startTime = System.currentTimeMillis();
-    long playTime = 0;
+    long playTime;
     long score = 0;
     String scoreStr;
 
@@ -58,12 +64,14 @@ public class ScrollView extends View {
     Resources res = this.getContext().getResources();
     Bitmap player = BitmapFactory.decodeResource(res, R.drawable.player);
     Bitmap enemy = BitmapFactory.decodeResource(res, R.drawable.enemy);
+    Bitmap backGround = BitmapFactory.decodeResource(res, R.drawable.background);
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
         state = GAME_RUN;
+
         //プレイヤーのジャンプ描画
         playerY += playerVY;
         playerVY += 4;
@@ -82,10 +90,24 @@ public class ScrollView extends View {
             enemyY = 650;
             // 次エネミーの速度を変更する
             createRandom();
-            Log.v("random", String.valueOf(enemyVX));
         }
 
         // 描画処理
+        ScrollActivity activity = new ScrollActivity();
+//        backgroundHeight = activity.backgroundHeight;
+//        backgroundWidth = activity.backgroundWidth;
+//        multiWidth = screenWidth / backgroundWidth;
+//        multiHeight = screenHeight / backgroundHeight;
+
+//        int drawBackWidth = (int)(backgroundWidth * multiWidth);
+//        int drawBackHeight = (int)(backgroundHeight * multiHeight);
+//        Rect src = new Rect(0, 0, backgroundWidth, backgroundHeight);
+//        Rect dst = new Rect(0, 0, drawBackWidth, drawBackHeight);
+//        canvas.drawBitmap(backGround, src, dst, paint);
+        Matrix matrix = new Matrix();
+//        matrix.postScale(multiWidth, multiHeight);
+        matrix.postScale(1.2f, 1.2f);
+        canvas.drawBitmap(backGround, matrix, paint);
         canvas.drawBitmap(player, 0, playerY, paint);
         canvas.drawBitmap(enemy, enemyX, enemyY, paint);
         scorePaint.setColor(Color.BLACK);
@@ -178,7 +200,6 @@ public class ScrollView extends View {
         // 描画位置用
         screenWidth = w;
         screenHeight = h;
-        Log.v("ViewSize:", w + ":" + h);
     }
 
     public ScrollView(Context context) {

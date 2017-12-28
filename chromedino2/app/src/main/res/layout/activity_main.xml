@@ -4,17 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="minayu.chromedino2.MainActivity"
-    android:background="@color/gray">
+    android:background="@color/white"
+    tools:context="minayu.chromedino2.MainActivity">
 
-    <Button
-        android:id="@+id/startBtn"
-        android:layout_width="215dp"
-        android:layout_height="57dp"
-        android:text="START"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="204dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/title" />
+
+    <ImageButton
+        android:id="@+id/startBtn"
+        android:layout_width="215dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="65dp"
+        android:layout_marginTop="188dp"
+        android:background="@drawable/rounded_corners_10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/startbutton" />
 </android.support.constraint.ConstraintLayout>
